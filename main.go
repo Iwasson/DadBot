@@ -43,7 +43,7 @@ func main() {
         fmt.Println(string(yml))
 
         // If begins with '@Username ' or is in private chat
-        if msg.IsAddressedToMe || msg.RoomName == "" || msg.IsDirect {
+        if msg.IsAddressedToMe || msg.RoomName == "dadjokes" || msg.IsDirect {
             if (strings.Contains(strings.ToLower(msg.GetNotAddressedText()), "i am")) {
                 name := strings.TrimPrefix(strings.ToLower(msg.GetNotAddressedText()), "i am")
                 msg.Reply(fmt.Sprintf("Hello %s, I'm Dad.", name))
@@ -60,7 +60,7 @@ func main() {
                 reply := joke()
                 msg.Reply(reply)
             }
-            if(strings.Contains(strings.ToLower(msg.Text), "add joke")) {
+            if(strings.HasPrefix(strings.ToLower(msg.Text), "add joke")) {
                 joke := strings.TrimPrefix(strings.ToLower(msg.Text), "add joke ")
                 addJoke(joke, msg.UserName)
                 msg.Reply("The joke has been added to my repertoire!")
