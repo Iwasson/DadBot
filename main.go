@@ -10,7 +10,7 @@ package main
 import (
     // Import from the current directory the folder rocket and call the package rocket
     "os"
-    //"os/exec"
+    "os/exec"
     "./rocket"
     "fmt"
     "strings"
@@ -102,4 +102,6 @@ func addJoke(joke, username string) {
     if err := f.Close(); err != nil {
         return
     }
+    exec.Command("/usr/bin/git", "commit", "-am", "Bot update").Run()
+    exec.Command("/usr/bin/git", "push").Run()
 }
