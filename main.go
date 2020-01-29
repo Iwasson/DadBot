@@ -1,4 +1,4 @@
-//usr/bin/go run $0 $@ ; exit
+//usr/bin/go run $1 $@ ; exit
 // That's a special She-bang for go
 
 // This is a demo rocketbot in golang
@@ -10,19 +10,17 @@ package main
 import (
     // Import from the current directory the folder rocket and call the package rocket
     "./rocket"
-
     "fmt"
-    "time"
+    "strings"
+    //"time"
     "gopkg.in/yaml.v2"
+    "io/ioutil"
+    "math/rand"
 )
 
 func main() {
-    // New Connection returning a rocketConnection object
-    // rb.cfg is backwards compatible with Kimani's rocket-bot-python
-    // Also see NewConnectionPassword and NewConnectionAuthToken
     rock, err := rocket.NewConnectionConfig("rb.cfg")
-
-    rock.UserTemporaryStatus(rocket.STATUS_AWAY)
+    rock.UserTemporaryStatus(rocket.STATUS_ONLINE)
 
     // If there was an error connecting, panic
     if err != nil {
@@ -44,24 +42,30 @@ func main() {
         fmt.Println(string(yml))
 
         // If begins with '@Username ' or is in private chat
-        if msg.IsAddressedToMe || msg.RoomName == "" {
-            // Reply to the message with a formatted string
-            reply, err := msg.Reply(fmt.Sprintf("@%s %s %d", msg.UserName, msg.GetNotAddressedText(), 0))
-
-            // If no error replying, take the reply and edit it to count to 10 asynchronously
-            if err == nil {
-                go func() {
-                    msg.SetIsTyping(true)
-                    for i := 1; i<=10; i++ {
-                        time.Sleep(time.Second)
-                        reply.EditText(fmt.Sprintf("@%s %s %d", msg.UserName, msg.GetNotAddressedText(),i))
-                    }
-                    msg.SetIsTyping(false)
-                }()
+        if msg.IsAddressedToMe || msg.RoomName == "" || msg.IsDirect {
+            if (strings.Contains(strings.ToLower(msg.GetNotAddressedText()), "i am")) {
+                name := strings.TrimPrefix(strings.ToLower(msg.GetNotAddressedText()), "i am")
+                msg.Reply(fmt.Sprintf("Hello %s, I'm Dad.", name))
             }
-
-            // React to the initial message
-            msg.React(":grinning:")
+            if(strings.Contains(strings.ToLower(msg.Text), "tell me a joke")) {
+                reply := joke()
+                msg.Reply(reply)
+            }
         }
     }
+}
+
+func joke() string {
+    jokeFile, err := ioutil.ReadFile("jokes.txt")
+
+    if err != nil {
+        return "No Joke found"
+    }
+
+    jokes := string(jokeFile)
+    jokeArray := strings.Split(jokes, "\n")
+
+    num := rand.Intn(len(jokeArray) - 1)
+
+    return jokeArray[num]
 }
