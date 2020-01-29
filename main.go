@@ -52,6 +52,10 @@ func main() {
                 name := strings.TrimPrefix(strings.ToLower(msg.GetNotAddressedText()), "i'm")
                 msg.Reply(fmt.Sprintf("Hello %s, I'm Dad.", name))
             }
+            if (strings.Contains(strings.ToLower(msg.GetNotAddressedText()), "im")) {
+                name := strings.TrimPrefix(strings.ToLower(msg.GetNotAddressedText()), "im")
+                msg.Reply(fmt.Sprintf("Hello %s, I'm Dad.", name))
+            }
             if(strings.Contains(strings.ToLower(msg.Text), "tell me a joke")) {
                 reply := joke()
                 msg.Reply(reply)
