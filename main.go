@@ -44,17 +44,17 @@ func main() {
 
         // If begins with '@Username ' or is in private chat
         if msg.IsAddressedToMe || msg.RoomName == "dadjokes" || msg.IsDirect {
-            if (strings.Contains(strings.ToLower(msg.GetNotAddressedText()), "i am ")) {
-                name := strings.Split(strings.ToLower(msg.GetNotAddressedText()), "i am")
+            if (strings.HasPrefix(strings.ToLower(msg.GetNotAddressedText()), "i am ")) || (strings.Contains(strings.ToLower(msg.GetNotAddressedText()), " i am ")) {
+                name := strings.Split(strings.ToLower(msg.GetNotAddressedText()), "i am ")
                 //name := strings.TrimPrefix(strings.ToLower(msg.GetNotAddressedText()), "i am ")
                 msg.Reply(fmt.Sprintf("Hello %s, I'm Dad.", name[1]))
             }
-            if (strings.Contains(strings.ToLower(msg.GetNotAddressedText()), "i'm ")) {
+            if (strings.HasPrefix(strings.ToLower(msg.GetNotAddressedText()), "i'm")) || (strings.Contains(strings.ToLower(msg.GetNotAddressedText()), " i'm ")) {
                 name := strings.Split(strings.ToLower(msg.GetNotAddressedText()), "i'm ")
                 //name := strings.TrimPrefix(strings.ToLower(msg.GetNotAddressedText()), "i'm ")
                 msg.Reply(fmt.Sprintf("Hello %s, I'm Dad.", name[1]))
             }
-            if (strings.Contains(strings.ToLower(msg.GetNotAddressedText()), "im ")) {
+            if (strings.HasPrefix(strings.ToLower(msg.GetNotAddressedText()), "im")) || (strings.Contains(strings.ToLower(msg.GetNotAddressedText()), " im ")) {
                 name := strings.Split(strings.ToLower(msg.GetNotAddressedText()), "im ")
                 //name := strings.TrimPrefix(strings.ToLower(msg.GetNotAddressedText()), "im ")
                 msg.Reply(fmt.Sprintf("Hello %s, I'm Dad.", name[1]))
