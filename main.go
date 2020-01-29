@@ -9,6 +9,7 @@ package main
 
 import (
     // Import from the current directory the folder rocket and call the package rocket
+    "os"
     "./rocket"
     "fmt"
     "strings"
@@ -51,6 +52,11 @@ func main() {
                 reply := joke()
                 msg.Reply(reply)
             }
+            if(strings.Contains(strings.ToLower(msg.Text), "add joke")) {
+                joke := strings.TrimPrefix(strings.ToLower(msg.Text), "add joke ")
+                addJoke(joke, msg.UserName)
+                msg.Reply("The joke has been added to my repertoire!")
+            }
         }
     }
 }
@@ -68,4 +74,20 @@ func joke() string {
     num := rand.Intn(len(jokeArray) - 1)
 
     return jokeArray[num]
+}
+
+func addJoke(joke, username string) {
+    f, err := os.OpenFile("jokes.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+
+    if err != nil {
+        return
+    }
+
+    if _, err := f.Write([]byte(joke + " -" + username + "\n")); err != nil {
+        return
+    }
+
+    if err := f.Close(); err != nil {
+        return
+    }
 }
