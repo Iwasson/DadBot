@@ -10,6 +10,7 @@ package main
 import (
     // Import from the current directory the folder rocket and call the package rocket
     "os"
+    //"os/exec"
     "./rocket"
     "fmt"
     "strings"
