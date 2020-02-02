@@ -60,7 +60,7 @@ func main() {
                 //name := strings.TrimPrefix(strings.ToLower(msg.GetNotAddressedText()), "im ")
                 msg.Reply(fmt.Sprintf("Hello %s, I'm Dad.", name[1]))
             }
-            if((strings.ToLower(msg.Text) == "tell me a joke")) {
+            if((strings.ToLower(msg.GetNotAddressedText()) == "tell me a joke")) {
                 reply := joke()
                 msg.Reply(reply)
             }
