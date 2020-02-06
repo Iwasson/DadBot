@@ -68,3 +68,4 @@ what are mario's favorite type of pants? denim denim denim -bravo
 i told a friend not to worry about memory management on tests. worst case, he’d lose a pointer two. -Scoobs
 why did the database start feeling better? it took a giant dump. -Scoobs
 how did pirates collaborate before computers? pier to pier networking -Scoobs
+why do software testers have so many children? because they're trained to reproduce mistakes. -Scoobs
