@@ -69,3 +69,4 @@ i told a friend not to worry about memory management on tests. worst case, he’
 why did the database start feeling better? it took a giant dump. -Scoobs
 how did pirates collaborate before computers? pier to pier networking -Scoobs
 why do software testers have so many children? because they're trained to reproduce mistakes. -Scoobs
+what's the difference between a dentist and a web page? the doctype. -Scoobs
