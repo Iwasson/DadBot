@@ -73,3 +73,4 @@ what's the difference between a dentist and a web page? the doctype. -Scoobs
 what did gandalf say to the poorly formatted date string? "you shall not parse!" -Scoobs
 why does yoda's code always crash? because there is no try. -Scoobs
 why do frontend devs always eat alone? they don't know how to join tables! -Scoobs
+what wedding gift should you get for a windows administrator? i don't know, perhaps you should check the registry for clues -sheep
