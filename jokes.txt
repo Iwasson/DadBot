@@ -112,3 +112,4 @@ what do you call someone else's cheese? nacho cheese -Sheep
 how do dogs tell knock knock jokes?  "knock knock." bark bark bark bark -bravo
 why does the pasta website keep falling apart? it's made with spaghetti code -Sheep
 what do you call a singing computer? a dell  -Sheep
+why was the programmer a terrible bartender? he wouldn't use tabs -Sheep
